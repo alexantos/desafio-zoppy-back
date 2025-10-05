@@ -3,6 +3,8 @@ import { AppController } from './app.controller';
 import { AppService } from './app.service';
 
 import { TypeOrmModule } from '@nestjs/typeorm';
+import { ClienteModule } from './cliente/cliente.module';
+import { Cliente } from './cliente/cliente.entity';
 
 
 @Module({
@@ -15,10 +17,11 @@ import { TypeOrmModule } from '@nestjs/typeorm';
 			password: '123456',
 			database: 'desafio_zoppy_back',
 			entities: [
-
+				Cliente
 			], //__dirname + '/**/*.entity{.ts,.js}'
 			synchronize: true,
 		}),
+		ClienteModule
 	],
 	controllers: [AppController],
 	providers: [AppService],
