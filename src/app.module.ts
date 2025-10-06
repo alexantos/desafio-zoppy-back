@@ -13,8 +13,8 @@ import { Cliente } from './cliente/cliente.entity';
 			type: 'postgres',
 			host: 'localhost',
 			port: 5432,
-			username: 'postgres',
-			password: '123456',
+			username: 'usuario',
+			password: 'usuario',
 			database: 'desafio_zoppy_back',
 			entities: [
 				Cliente
