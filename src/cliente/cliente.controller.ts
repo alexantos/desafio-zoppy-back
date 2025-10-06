@@ -1,4 +1,4 @@
-import { Body, Controller, Delete, Get, Param, Patch, Post } from '@nestjs/common';
+import { Body, Controller, Delete, Get, Param, Patch, Post, Query } from '@nestjs/common';
 import { Cliente } from './cliente.entity';
 import { ClienteService } from './cliente.service';
 
@@ -13,8 +13,8 @@ export class ClienteController {
     }
 
     @Get()
-    listar(): Promise<Cliente[]> {
-        return this.clienteService.listar();
+    listar(@Query('nome') nome: string): Promise<Cliente[]> {
+        return this.clienteService.listar(nome);
     }
 
     @Get(':id')

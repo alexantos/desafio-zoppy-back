@@ -15,8 +15,12 @@ export class ClienteService {
         return this.clienteRepository.save(cliente);
     }
 
-    async listar(): Promise<Cliente[]> {
-        return this.clienteRepository.find();
+    async listar(nome: string = ''): Promise<Cliente[]> {
+        const queryBuilder = this.clienteRepository.createQueryBuilder('cliente');
+        if (nome) {
+            queryBuilder.andWhere('cliente.nome LIKE :nome', { nome: `%${nome}%` });
+        }
+        return queryBuilder.getMany();
     }
 
     async recuperar(id: string): Promise<Cliente> {
